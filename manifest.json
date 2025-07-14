@@ -1,0 +1,13 @@
+{
+    "manifest_version": 3,
+    "name": "Hide youtube shorts",
+    "version": "1.0",
+    "description": "A simple extension to hide youtube shorts.",
+    "content_scripts" : [
+        {
+            "matches" : ["https://www.youtube.com/*"],
+            "js" : ["main.js"],
+            "run_at": "document_idle"
+        }
+    ]
+}
