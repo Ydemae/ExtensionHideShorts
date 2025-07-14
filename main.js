@@ -1,19 +1,20 @@
 console.log("Shorts hiding extension loaded !");
 
+const shortsContainerTypes = ['grid-shelf-view-model', 'ytd-rich-shelf-renderer', 'ytd-reel-shelf-renderer']
+
 function findAndHideShortsSection() {
     let shortsSectionFound = false;
 
-    const shortsSections = Array.from(document.querySelectorAll('ytd-rich-shelf-renderer:not([items-per-row])'));
-    if (shortsSections.length > 0) {
-        hideSections(shortsSections)
-        shortsSectionFound = true;
-    }
+    shortsContainerTypes.forEach(
+        shortsContainerType => {
+            const shortsSections = Array.from(document.querySelectorAll(shortsContainerType));
 
-    const shortsReelsSections = Array.from(document.querySelectorAll('ytd-reel-shelf-renderer'));
-    if (shortsReelsSections.length > 0) {
-        hideSections(shortsReelsSections)
-        shortsSectionFound = true;
-    }
+            if (shortsSections.length > 0) {
+                hideSections(shortsSections)
+                shortsSectionFound = true;
+            }
+        }
+    )
 
     return shortsSectionFound;
 }
