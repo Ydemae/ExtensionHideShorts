@@ -29,9 +29,7 @@ function hideSections(sectionsToHide){
 if (!findAndHideShortsSection()) {
     //If not shorts section found, observe the page for changes
     const observer = new MutationObserver(() => {
-        if (findAndHideShortsSection()) {
-            observer.disconnect();
-        }
+        findAndHideShortsSection()
     });
     observer.observe(document.body, { childList: true, subtree: true });
 }
